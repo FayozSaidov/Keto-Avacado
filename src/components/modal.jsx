@@ -3,6 +3,7 @@ import { IoClose } from "react-icons/io5";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import "../index.css"
 
 const Modal = ({ closeModal }) => {
   const [formData, setFormData] = useState({
@@ -69,7 +70,6 @@ const Modal = ({ closeModal }) => {
       <motion.div
         onClick={closeModal}
         className="bg_modal"
-        {...modalBackgroundAnim}  // Background animation
       >
         <motion.div
           onClick={(e) => e.stopPropagation()}

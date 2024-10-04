@@ -2,7 +2,7 @@ import icon1 from "../img/Без названия.png";
 import icon2 from "../img/Без названия (1).png";
 import icon3 from "../img/Без названия (2).png";
 import ModalBtn from "./modalBtn";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
 function Course() {
@@ -49,7 +49,7 @@ function Course() {
   }, []);
 
   return (
-    <>
+    <AnimatePresence>
       <div
         ref={ref}
         id="aboutCourse"
@@ -59,8 +59,8 @@ function Course() {
         <motion.div
           className="w-6/12 h-auto"
           initial={{ opacity: 0, y: 50 }}
+          animate={isVisible && { opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
         >
           <ul>
             {arr.map((item, idx) => (
@@ -81,12 +81,7 @@ function Course() {
         </motion.div>
 
         {/* right side */}
-        <motion.div
-          className=" h-auto w-6/12 p-10 flex flex-col justify-center"
-          initial={{ opacity: 0, y: 50 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-        >
+        <div className="h-auto w-6/12 p-10 flex flex-col justify-center">
           <h2 className="text-lg">Преобразуйте свой образ жизни</h2>
           <h1 className="text-4xl text-yellow-500 mt-3">
             Курс здорового питания
@@ -97,9 +92,9 @@ function Course() {
             энергию и устойчивость.
           </p>
           <ModalBtn text="СВЯЗАТЬСЯ" />
-        </motion.div>
+        </div>
       </div>
-    </>
+    </AnimatePresence>
   );
 }
 
